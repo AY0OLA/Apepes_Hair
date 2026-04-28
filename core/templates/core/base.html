@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apepe's Hair/ {%block title%}{%endblock%}</title>
+  </head>
+  <body>
+    <!-- navbar -->
+
+    <!-- {/* Desktop Nav */} -->
+    <nav
+      class="hidden md:block bg-amber-800 text-white dark:bg-gray-900 backdrop-blur-md rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md z-20 py-4 font-inter transition-colors duration-500"
+    >
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <img
+          src="/img/logo.PNG"
+          alt="Apepe Hair"
+          srcset=""
+          class="w-40 h-20 object-contain"
+        />
+
+        <div class="flex items-center gap-6">
+          <a href="/" class="text-xl"> Home </a>
+          <a href="#about" class="text-xl"> About </a>
+          <a href="#services" class="text-xl"> Book </a>
+          <a
+            href="#project"
+            class="px-6 py-3 text-lg font-semibold border border-white text-white rounded-xl hover:bg-white hover:text-amber-700 transition-colors"
+          >
+            Sign Up
+          </a>
+          <a
+            href="#contact"
+            class="px-6 py-3 text-lg font-semibold border border-white text-white rounded-xl hover:bg-white hover:text-amber-700 transition-colors"
+          >
+            Login
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div
+      class="md:hidden fixed top-0 left-0 w-full bg-amber-800 text-white z-50 flex justify-between items-center px-4 py-3 shadow-md"
+    >
+      <img src="/img/logo.PNG" class="w-8 h-8 object-contain" />
+
+      <!-- Menu Button -->
+      <button id="menuBtn" class="text-2xl">☰</button>
+    </div>
+
+    <!-- Overlay (background dark blur) -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"
+    ></div>
+
+    <!-- Side Menu -->
+    <div
+      id="sideMenu"
+      class="fixed top-0 left-0 h-full w-64 bg-amber-700 text-white transform -translate-x-full transition-transform duration-300 z-50 p-5 space-y-6"
+    >
+      <!-- Close Button -->
+      <button id="closeBtn" class="text-2xl mb-4">✕</button>
+
+      <a href="#about" class="block text-lg">About</a>
+      <a href="#services" class="block text-lg">Services</a>
+      <a href="#project" class="block text-lg">Sign Up</a>
+      <a href="#contact" class="block text-lg">Login</a>
+    </div>
+
+  </body>
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const sideMenu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
+
+    function openMenu() {
+      sideMenu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    }
+
+    function closeMenu() {
+      sideMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    }
+
+    menuBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    // Close when a link is clicked
+    document.querySelectorAll("#sideMenu a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  </script>
+</html>
