@@ -7,7 +7,7 @@ from . import views
 def index(request): 
     items = Items.objects.filter(is_sold=False)[0:6]
     categories = Category.objects.all()
-    return render(request, 'core/index.html', {
+    return render(request, 'core/base.html', {
         'category': categories,
         'items': items
     })
@@ -27,4 +27,4 @@ def signup(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('core:login')  # redirect to the login page
+    return redirect('core:login') 
